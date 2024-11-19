@@ -88,6 +88,7 @@ export default function ShowCaseReview() {
       updateWidgetState(false, false, true); // Move to WidgetDesign
     } else if (widgetDesign) {
       updateWidgetState(true, false, false); // Finish, go back to ShowCaseReview
+      handleBundling()
     }
   };
 

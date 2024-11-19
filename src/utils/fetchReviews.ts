@@ -5,6 +5,8 @@ export interface UniqueReview {
     id: number;
     content: string;
     rating: number;
+    reviewerName:string
+    // img:any
 }
 
 export const fetchReviews = async (widgetId: string): Promise<UniqueReview[]> => {
@@ -12,8 +14,8 @@ export const fetchReviews = async (widgetId: string): Promise<UniqueReview[]> =>
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve([
-                { id: 1, content: 'Great product!', rating: 5 },
-                { id: 2, content: 'Could be better.', rating: 3 },
+                { id: 1, content: 'From the moment I called, their customer service was outstanding–friendly, responsive, and efficient.', rating: 5 , reviewerName:'Cindy Brennan'  },
+                { id: 2, content: 'They exceeded my expectations in every way, and I am grateful for their dedication to excellence..', rating: 5 , reviewerName:'Maddie Connor'  },
             ]);
         }, 1000);
     });
