@@ -12,6 +12,7 @@ import { setWidget } from "@/store/slices/widgetSlice";
 import CitationNavbar from "../review-dashboard-mobile/ReviewNavbar";
 import { useState } from "react";
 import { DecimalStar } from "../CustomComponents/DecimalStar";
+import CopyWidgetBuilder from "./CopyWidgetBuider";
 
 const RecentArray = [
   {
@@ -141,9 +142,11 @@ export default function ShowcaseReview({ bundle , bundleLoading }: ShowcaseRevie
                 <button
                  disabled={!!bundle}
                   onClick={handleShowListWidget}
-                  className="font-bold md:text-lg mt-0 md:mt-4 lg:text-[20px] border px-6 py-2 text-[10px] rounded-xl w-fit text-white text-center bg-[#631363]">
+                  className={`${!!bundle?"cursor-not-allowed":""} font-bold md:text-lg mt-0 md:mt-4 lg:text-[20px] border px-6 py-2 text-[10px] rounded-xl w-fit text-white text-center bg-[#631363]`}>
                   Create
                 </button>
+                { bundle &&
+                <CopyWidgetBuilder/>}
               </div>
             </div>
           </div>
