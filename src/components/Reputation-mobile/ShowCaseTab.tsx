@@ -59,6 +59,8 @@ const RecentArray = [
 export default function ShowCaseReview() {
   const { showCaseReview, selectReviews, widgetDesign } = useWidgetSelectors();
   const [selectedReviews, setSelectedReviews] = useState(RecentArray);
+  const [bundle, setBundle] = useState<string | null>(null);
+  const [bundleLoading, setBundleLoading] = useState<boolean >(false);
   const dispatch = useDispatch();
 
   const updateWidgetState = (
@@ -83,16 +85,40 @@ export default function ShowCaseReview() {
     }
   };
 
+  const handleBundling = async () =>{
+    setBundleLoading(true)
+    try {
+      const response = await fetch('/api/widget/bundle', { method: 'POST' });
+      const data = await response.json(); // Type the response data
+      if(data) {
+        alert(data.message || 'Bundling completed');
+      setBundle(data.message);
+      console.log('data:',data)
+    }
+      
+  } catch (error) {
+      // Type the error to catch errors from fetch
+      if (error instanceof Error) {
+          alert('Bundling failed: ' + error.message);
+      } else {
+          alert('Bundling failed due to an unknown error');
+      }
+  } finally {
+    setBundleLoading(false);
+  }
+  }
+
   const handleNextOrFinish = () => {
     if (selectReviews) {
       updateWidgetState(false, false, true); // Move to WidgetDesign
     } else if (widgetDesign) {
+      handleBundling()
       updateWidgetState(true, false, false); // Finish, go back to ShowCaseReview
     }
   };
   return (
     <div className="bg-[#F4F4F4] min-h-screen">
-      {showCaseReview && <ShowcaseReview />}
+      {showCaseReview && <ShowcaseReview bundle={bundle} bundleLoading={bundleLoading} />}
       {selectReviews && (
         <SelectReviews
           setSelectedReviews={setSelectedReviews}

@@ -32,7 +32,13 @@ const RecentArray = [
     svgRating: <StarRatingMobile rating={5} />,
   },
 ];
-export default function ShowcaseReview() {
+
+interface ShowcaseReviewProps {
+  bundle?: string | null ; 
+  bundleLoading?: boolean
+}
+
+export default function ShowcaseReview({ bundle , bundleLoading }: ShowcaseReviewProps) {
   const dispatch = useDispatch();
   const [showInput, setShowInput] = useState(false);
 
@@ -128,8 +134,12 @@ export default function ShowcaseReview() {
                 <div className="text-[10px] md:text-lg lg:text-[20px] tracking-[-0.06em] text-[#7F7F7F] text-center">
                   Display reviews in an ordered,{" "}
                   <span className="text-[#631363]">customizable</span> list
+                  {}
+                {bundle  && <p className=' text-[#631363]'>{bundle}</p>}
+                {bundleLoading  && <p className=' text-[#631363]'>Creating Bundle...</p>}
                 </div>
                 <button
+                 disabled={!!bundle}
                   onClick={handleShowListWidget}
                   className="font-bold md:text-lg mt-0 md:mt-4 lg:text-[20px] border px-6 py-2 text-[10px] rounded-xl w-fit text-white text-center bg-[#631363]">
                   Create
@@ -224,6 +234,7 @@ export default function ShowcaseReview() {
                   Use just the review data only to completely customize the
                   layout to fit your interface&apos;s code the way you want it
                 </div>
+               
                 <button
                   onClick={() => setShowInput(true)}
                   className="font-bold md:text-lg mt-0 lg:mt-4 lg:text-[20px] text-xs border px-6 py-2 rounded-xl w-fit text-white text-center bg-[#631363]">

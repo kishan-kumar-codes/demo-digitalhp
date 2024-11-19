@@ -35,6 +35,7 @@ const targetSegments: Segment[] = [
   { color: "#27272D", percentage: 34 }
 ];
 
+
 const targetHeights = [165, 75, 110, 138, 105, 160];
 
 function index() {
