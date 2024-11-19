@@ -18,6 +18,35 @@ const typography: React.CSSProperties = {
   height: "100%",
 };
 
+
+const citationSites = [{
+  site:"google.com",
+  type:"General Directory",
+  authority:"94",
+  value:"Very High"
+},{
+  site:"airbnb.com",
+  type:"General Directory",
+  authority:"44",
+  value:"Low"
+},{
+  site:"apartmentguide.com",
+  type:"General Directory",
+  authority:"98",
+  value:"Very High"
+},{
+  site:"bbb.org",
+  type:"General Directory",
+  authority:"10",
+  value:"Very Low"
+},{
+  site:"carfax.com",
+  type:"General Directory",
+  authority:"74",
+  value:"High"
+}]
+
+
 /**
  * TableHeader component
  *
@@ -51,7 +80,7 @@ const TableHeader: React.FC = (): JSX.Element => {
           <div className="flex gap-1 h-[40px] justify-between items-center">
             <span style={{ ...typography }}>Citation Site</span> {" "}
             <span className="mt-0.5 font-[13px]">
-              {/* <BuildermergeSvgs /> */}
+              <BuildermergeSvgs />
             </span>
           </div>
           <div className="flex  gap-1 h-[40px] justify-center items-center">
@@ -59,13 +88,13 @@ const TableHeader: React.FC = (): JSX.Element => {
               Type of Site
             </span>
             <span className="mt-0.5 font-[13px]">
-              {/* <BuildermergeSvgs /> */}
+              <BuildermergeSvgs />
             </span>
           </div>
           <div className="flex  gap-1 h-[40px] justify-center items-center">
             <span style={{ ...typography }}>Authority</span>
             <span className="mt-0.5 font-[13px]">
-              {/* <BuildermergeSvgs /> */}
+              <BuildermergeSvgs />
             </span>
           </div>
           <div className="flex w-[80px] h-[40px] justify-center items-center">
@@ -90,12 +119,34 @@ const TableHeader: React.FC = (): JSX.Element => {
  *
  * @returns {JSX.Element} The rendered citation table component
  */
+
+
 const AvailableitationTable: React.FC = (): JSX.Element => {
+    
   return (
     <div className="flex flex-col w-full justify-center -ml-1 items-center">
       <TableHeader />
       {/* Render multiple citation rows */}
-      <CitationRow
+
+      {
+        citationSites.map((single,index)=>(
+          <CitationRow
+          site={single.site}
+          type={single.type}
+          authority={single.authority}
+          value={single.value}
+          bgColor= { index%2 === 0 ? ("#ffffff") : ("F4F4F4") }
+          notes={
+            <>
+              <CallSvgs />
+              <ContactSvgs />
+            </>
+          }
+        />
+        ))
+      }
+
+      {/* <CitationRow
         site="google.com"
         type="General Directory"
         authority="94"
@@ -109,7 +160,7 @@ const AvailableitationTable: React.FC = (): JSX.Element => {
         }
       />
       <CitationRow
-        site="google.com"
+        site="airebnb.com"
         type="General Directory"
         authority="94"
         value="Very High"
@@ -122,7 +173,7 @@ const AvailableitationTable: React.FC = (): JSX.Element => {
         }
       />
       <CitationRow
-        site="google.com"
+        site="apartmentguide.com"
         type="General Directory"
         authority="94"
         bgColor="#ffffff"
@@ -135,33 +186,7 @@ const AvailableitationTable: React.FC = (): JSX.Element => {
         }
       />
       <CitationRow
-        site="google.com"
-        type="General Directory"
-        authority="94"
-        bgColor="#f2f2f2"
-        value="Very High"
-        notes={
-          <>
-            <CallSvgs />
-            <ContactSvgs />
-          </>
-        }
-      />
-      <CitationRow
-        site="google.com"
-        type="General Directory"
-        authority="94"
-        bgColor="#ffffff"
-        value="Very High"
-        notes={
-          <>
-            <CallSvgs />
-            <ContactSvgs />
-          </>
-        }
-      />
-      <CitationRow
-        site="google.com"
+        site="carafax.com"
         type="General Directory"
         authority="94"
         bgColor="#f2f2f2"
@@ -186,6 +211,32 @@ const AvailableitationTable: React.FC = (): JSX.Element => {
           </>
         }
       />
+      <CitationRow
+        site="google.com"
+        type="General Directory"
+        authority="94"
+        bgColor="#f2f2f2"
+        value="Very High"
+        notes={
+          <>
+            <CallSvgs />
+            <ContactSvgs />
+          </>
+        }
+      />
+      <CitationRow
+        site="google.com"
+        type="General Directory"
+        authority="94"
+        bgColor="#ffffff"
+        value="Very High"
+        notes={
+          <>
+            <CallSvgs />
+            <ContactSvgs />
+          </>
+        }
+      /> */}
     </div>
   );
 };

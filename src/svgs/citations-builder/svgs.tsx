@@ -1,3 +1,5 @@
+
+
 export const Instasvgs = () => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 18 18" fill="none">
@@ -84,8 +86,8 @@ export const PinterestSvgs = () => {
 }
 export const LineSvgs = () => {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="49" height="10" viewBox="0 0 49 10" fill="none">
-  <path d="M48.4394 1H0.560641C0.224256 1 0 0.8 0 0.5C0 0.2 0.224256 0 0.560641 0H48.4394C48.7757 0 49 0.2 49 0.5C49 0.8 48.7757 1 48.4394 1Z" fill="#631363"/>
+    <svg xmlns="http://www.w3.org/2000/svg" width="49" height="10" viewBox="0 0 49 10" fill="none" >
+  <path className="" d="M48.4394 1H0.560641C0.224256 1 0 0.8 0 0.5C0 0.2 0.224256 0 0.560641 0H48.4394C48.7757 0 49 0.2 49 0.5C49 0.8 48.7757 1 48.4394 1Z" fill="#631363"/>
 </svg>
 
   )
@@ -136,6 +138,10 @@ export const BuildermergeSvgs = () => {
 
   )
 }
+
+
+
+
 export const BuilderRectangleSvgs = () => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">

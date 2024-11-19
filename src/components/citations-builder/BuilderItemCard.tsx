@@ -62,7 +62,7 @@ const BuilderItemCard = ({
             </div>
           </div>
         </div>
-        <div className="flex gap-2 ">
+        <div className="flex gap-2 items-center ">
           {/* Tooltip icon and optional location icon */}
           <TooltipIcon />
           {isLocation && titleSvg}

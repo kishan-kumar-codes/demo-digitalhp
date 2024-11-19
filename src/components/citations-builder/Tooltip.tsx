@@ -23,6 +23,40 @@ const Typography: React.CSSProperties = {
  *
  * @returns {JSX.Element} The rendered Tooltip component.
  */
+// export default function Tooltip({
+//   message,
+//   children,
+// }: {
+//   message: string;
+//   children: React.ReactNode;
+// }) {
+//   return (
+//     <div className="group relative flex max-w-max z-50 flex-col items-center justify-center">
+//       <div className="absolute left-[20px] -top-16 rotate-180 ml-auto mr-auto min-w-max -translate-x-1/2 scale-0 transform rounded-3xl p-2 px-3 py-2 text-xs font-medium transition-all duration-500 group-hover:scale-100">
+//         <div className="flex max-w-xs flex-col items-center shadow-lg">
+//           {/* <div className="flex clip-bottom h-2 w-4 ml-4 bg-[#631363]"></div> */}
+//           <div
+//             className="flex clip-bottom"
+//             style={{
+//               width: 0,
+//               height: 0,
+//               borderLeft: "6px solid transparent", // Left side of the triangle
+//               borderRight: "6px solid transparent", // Right side of the triangle
+//               borderBottom: "16px solid #631363", // Triangle pointing upward with color
+//               marginLeft: "16px", //
+//             }}
+//           ></div>
+
+//           <div className=" rotate-180 w-[150px] lg:w-[325px] lg:text-[20px] h-full bg-[#631363] p-2 text-center text-xs text-white rounded-xl">
+//             {message}
+//           </div>
+//         </div>
+//       </div>
+//       {children}
+//     </div>
+//   );
+// }
+
 export default function Tooltip({
   message,
   children,
@@ -32,23 +66,24 @@ export default function Tooltip({
 }) {
   return (
     <div className="group relative flex max-w-max z-50 flex-col items-center justify-center">
-      <div className="absolute left-[20px] -top-16 rotate-180 ml-auto mr-auto min-w-max -translate-x-1/2 scale-0 transform rounded-3xl p-2 px-3 py-2 text-xs font-medium transition-all duration-500 group-hover:scale-100">
-        <div className="flex max-w-xs flex-col items-center shadow-lg">
-          {/* <div className="flex clip-bottom h-2 w-4 ml-4 bg-[#631363]"></div> */}
+      <div className="absolute left-[20px] -top-[120px] lg:-top-[160px] rotate-180 ml-auto mr-auto min-w-max -translate-x-1/2 scale-0 transform rounded-3xl p-2 text-xs font-medium transition-all duration-500 group-hover:scale-100">
+        <div className="flex flex-col items-center shadow-lg">
+          {/* Tooltip pointer */}
           <div
-  className="flex clip-bottom"
-  style={{
-    width: 0,
-    height: 0,
-    borderLeft: "8px solid transparent", // Left side of the triangle
-    borderRight: "8px solid transparent", // Right side of the triangle
-    borderBottom: "8px solid #631363", // Triangle pointing upward with color
-    marginLeft: "16px", // 
-  }}
-></div>
+            className="flex clip-bottom"
+            style={{
+              width: 0,
+              height: 0,
+              borderLeft: "10px solid transparent",
+              borderRight: "10px solid transparent",
+              borderBottom: "16px solid #631363",
+              marginLeft: "16px",
+            }}
+          ></div>
 
-          <div className=" rotate-180 w-[150px] h-full bg-[#631363] p-2 text-center text-xs text-white rounded-xl">
-            {message}
+          {/* Tooltip message */}
+          <div className="rotate-180 w-[120px] lg:w-[211px] lg:h-[139px] bg-[#631363] p-2 text-start text-xs lg:text-lg text-white rounded-xl">
+          <p className="w-full h-full flex ">{message}</p>
           </div>
         </div>
       </div>
@@ -56,6 +91,7 @@ export default function Tooltip({
     </div>
   );
 }
+
 
 /**
  * TooltipIcon component
@@ -67,13 +103,18 @@ export default function Tooltip({
  */
 export const TooltipIcon = (): JSX.Element => {
   return (
-    <Tooltip message="This Citation allows you to hide the address.">
+    <Tooltip message="This Citation allows you to hide the address. Perfect for service area businesses">
       <div className="cursor-pointer flex flex-col gap-1 lg:w-[90px]">
-        <span style={Typography} className="text-[9px] lg:text-[16px]">Learn More</span>
-        <div className=" ">
+        <span
+          style={Typography}
+          className="text-[9px] lg:text-[17px] border-b-2 pr-0 border-[#631363] whitespace-nowrap "
+        >
+          Learn More
+        </span>
+        {/* <div className=" ">
           {" "}
           <LineSvgs />
-        </div>
+        </div> */}
       </div>
     </Tooltip>
   );

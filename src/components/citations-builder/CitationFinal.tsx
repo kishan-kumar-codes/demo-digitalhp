@@ -10,6 +10,7 @@ import CitationTable from './ExistingCitationTable'
 import AvailableitationTable from './AvailableitationTable'
 import BuilderModel from './BuilderModel'
 import { InfoSvgs } from '@/svgs/seo-screens/svgs'
+import Link from 'next/link'
 
 const Typography: React.CSSProperties = {
     fontSize: "20px",
@@ -136,7 +137,10 @@ const CitationFinal: React.FC = (): JSX.Element => {
           <button
             className="bg-[#40F440] px-2 text-xs md:text-xl  font-[700] text-[#3D3D3D] p-2 rounded-2xl mt-5"
             onClick={openModal}>
+              <Link href={'/onboarding/education/final'}>
             Confirm & Continue
+              
+              </Link>
           </button>
           <button className=" px-2 font-[700] text-xs md:text-xl border-2 border-[#631363] text-[#631363] p-2 rounded-2xl mt-5">
             Save For Later
