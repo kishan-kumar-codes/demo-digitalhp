@@ -12,7 +12,7 @@ import { useSession } from "next-auth/react";
 import { useClientMediaQuery } from "../../../utils/srchooksuseClientMediaQuery";
 import DesktopOnboardingProfile from "../../onboardingDesktop/trials/profile";
 
-const Profile: React.FC = () => {
+const Profile: React.FC = ({ setProfile }) => {
   const router = useRouter();
   const context = useContext(MyContext);
   // const { updateContextData } = context;
@@ -34,105 +34,104 @@ const Profile: React.FC = () => {
     if (context) {
       context.updateContextData({ firstName, lastName });
     }
-    // try {
-    //   const response = await fetch("/api/profile/update-profile", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({
-    //       token: session?.session[0],
-    //       firstName: firstName,
-    //       lastName: lastName,
-    //       email: session?.email,
-    //     }),
-    //   });
 
-    //   if (!response.ok) {
-    //     if (response.status === 500) {
-    //       const data = await response.json();
-    //       if (data.error === "Failed to refresh access token") {
-    //         // Token refresh failed, prompt user to log in again
-    //         setError("Session expired. Please log in again.");
-    //         return;
-    //       }
-    //     }
-    //     throw new Error("Failed to update profile");
-    //   }
+    try {
+      const response = await fetch("/api/profile", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          token: session?.user?.accessToken,
+          firstName: firstName,
+          lastName: lastName,
+          email: session?.user?.email,
+        }),
+      });
 
-    //   const updatedUser = await response.json();
-    //   session.user.firstName = updatedUser.firstName;
-    //   session.user.lastName = updatedUser.lastName;
-
-    //   // Navigate to the next page
-    router
-      .push("/onboarding/trials/business-info")
-      .catch((error) => console.error("Navigation error:", error));
-    // } catch (error) {
-    //   console.error("Profile update error:", error);
-    //   setError("Failed to update profile");
-    // }
-  };
-  if (isMobile) {
-    return (
-      <Layout
-        hHeading=""
-        Childrens={
-          <>
-            <div className="flex justify-center">
-              <ProgressBar count={2} />
-            </div>
-            <div className="relative h-full flex items-start w-full flex-col mt-[27px] px-[43px]">
-              <div className="text-[22px] font-bold text-darkSilverColor text-center">
-                <h1 style={{ fontWeight: "bold" }}>
-                  Let's start by setting up your profile.
-                </h1>
-              </div>
-              <p className="text-[16px] text-darkSilverColor mt-[22px]">
-                Set up your profile.
-              </p>
-
-              <div style={{ width: "100%" }}>
-                <div className="text-[14px] font-bold text-darkSilverColor mt-[12px]">
-                  <label style={{ fontWeight: "bold" }}>First name</label>
-                </div>
-                <input
-                  type="text"
-                  value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
-                  className="w-full bg-white h-[33px] text-[12px] text-darkSilverColor pl-[18px] py-[10px] rounded-lg"
-                />
-              </div>
-
-              <div style={{ width: "100%", marginTop: "5px" }}>
-                <div className="text-[14px] font-bold text-darkSilverColor">
-                  <label style={{ fontWeight: "bold" }}>Last name</label>
-                </div>
-                <input
-                  type="text"
-                  value={lastName}
-                  onChange={(e) => setLastName(e.target.value)}
-                  className="w-full bg-white h-[33px] text-[12px] text-darkSilverColor pl-[18px] py-[10px] rounded-lg"
-                />
-              </div>
-
-              <div className="flex justify-center w-full">
-                <button
-                  className="text-[16px] font-bold text-white py-[10px] mt-[25px] w-[221px] text-center bg-palatinatePurple rounded-lg"
-                  onClick={handleContinueClick}
-                  style={{ cursor: "pointer" }}>
-                  Continue
-                </button>
-              </div>
-              <div className="absolute bottom-14 flex justify-center left-[25%]">
-                <Image src={hubSparkLogo} alt="Hub Spark Logo" />
-              </div>
-            </div>
-          </>
+      if (!response.ok) {
+        if (response.status === 500) {
+          const data = await response.json();
+          if (data.error === "Failed to refresh access token") {
+            // Token refresh failed, prompt user to log in again
+            setError("Session expired. Please log in again.");
+            return;
+          }
         }
-      />
-    );
-  } else return <DesktopOnboardingProfile />;
+        throw new Error("Failed to update profile");
+      }
+
+      const updatedUser = await response.json();
+      session.user.firstName = updatedUser.firstName;
+      session.user.lastName = updatedUser.lastName;
+
+      // Navigate to the next page
+      try {
+        await router.push("/onboarding/trials/business-info");
+        // Optionally, handle successful navigation here if needed
+      } catch (error) {
+        console.error("An error occurred during navigation:", error);
+      }
+    } catch (error) {
+      console.error("Profile update error:", error);
+      setError("Failed to update profile");
+    }
+  };
+  return (
+    <>
+      <div className="flex justify-center">
+        <ProgressBar count={2} />
+      </div>
+      <div className="relative h-full flex items-center justify-center w-full flex-col mt-[27px] px-[43px]">
+        <div className="text-[22px] font-bold w-full text-darkSilverColor text-center">
+          <h1 className="lg:text-[45px]" style={{ fontWeight: "bold" }}>
+            Let&apos;s start by setting up your profile.
+          </h1>
+        </div>
+        <p className="text-[16px] lg:text-[26px] text-center w-full text-darkSilverColor mt-[22px]">
+          Set up your profile.
+        </p>
+
+        <div className="flex flex-col w-full items-center justify-center">
+          <label
+            className="text-start w-full lg:w-[40%] text-[14px] lg:text-[28px] font-bold text-darkSilverColor mt-[12px]"
+            style={{ fontWeight: "bold" }}>
+            First name
+          </label>
+          <input
+            type="text"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            className="w-full lg:w-[40%] bg-white h-[33px] text-[12px] lg:text-[22px] text-darkSilverColor pl-[18px] py-[10px] lg:py-8 rounded-lg lg:rounded-xl"
+          />
+        </div>
+
+        <div className="flex flex-col w-full items-center justify-center">
+          <div className="text-[14px] lg:text-[28px]  font-bold w-full lg:w-[40%] text-darkSilverColor">
+            <label style={{ fontWeight: "bold" }}>Last name</label>
+          </div>
+          <input
+            type="text"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            className="w-full lg:w-[40%] bg-white h-[33px] text-[12px] lg:text-[22px] text-darkSilverColor pl-[18px] py-[10px] lg:py-8 rounded-lg lg:rounded-xl"
+          />
+        </div>
+
+        <div className="flex justify-center flex-col items-center gap-4 w-full">
+          <button
+            className="text-[16px] font-bold text-white py-[10px] mt-[25px] lg:text-[32px] w-[221px] text-center bg-palatinatePurple rounded-lg lg:rounded-2xl"
+            onClick={handleContinueClick}
+            style={{ cursor: "pointer" }}>
+            Continue
+          </button>
+          <div className="lg:hidden flex justify-center left-[25%]">
+            <Image src={hubSparkLogo} alt="Hub Spark Logo" />
+          </div>
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default Profile;
