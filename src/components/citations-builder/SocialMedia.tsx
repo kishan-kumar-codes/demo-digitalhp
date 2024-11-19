@@ -41,9 +41,9 @@ const SocialMedia = ({
           {label}
         </label>
       </div>
-      <div className="flex w-full lg:w-[80%] bg-[#ffffff] rounded-2xl h-full p-[2px] lg:p-3">
+      <div className="flex w-full lg:w-[80%] bg-[#F4F4F4] rounded-2xl h-full p-[2px] lg:p-3">
         {svg}
-        <input type="text" className="w-full h-full focus:outline-none rounded-2xl lg:text-[16px] ml-4"/>
+        <input type="text" className="w-full h-full focus:outline-none rounded-2xl bg-[#F4F4F4] lg:text-[16px] ml-4"/>
       </div>
     </div>
   );

@@ -104,13 +104,13 @@ const InputBarField = ({
             {filesLabel}
           </label>
           <div
-            className={`flex justify-center items-center rounded-2xl h-32 bg-[#FFFFFF] w full px-2 w-full
+            className={`flex justify-center items-center rounded-2xl h-32 bg-[#F4F4F4] w full px-2 w-full
             } `}>
             <input
               type="file"
               id="files"
               name="files"
-              className={`py-2 w-full text-center px-5 italic hidden text-[#6D6D6D] rounded-3xl focus:outline-none `}
+              className={`py-2 w-full text-center px-5 italic hidden text-[#6D6D6D] bg-[#F4F4F4] rounded-3xl focus:outline-none `}
             />
             <div className="flex justify-center absolute bottom-4 right-3 lg:bottom-6 :right-5 md:right-10">
               <label
@@ -128,7 +128,7 @@ const InputBarField = ({
         </>
       )}
       {!textField && !files && (
-        <div className="relative min-w-[70%] w-full">
+        <div className="relative min-w-[70%] w-full bg-[#F4F4F4] rounded-2xl ">
           <input
             type="text"
             id="citations"
@@ -136,7 +136,7 @@ const InputBarField = ({
             placeholder={placeHolder}
             readOnly={readonly as any}
             onChange={onChange}
-            className={` text-[12px] pl-3 min-h-[25px] md:py-3  md:px-3 px-1 w-full  ${fontFamily} rounded-2xl focus:outline-none lg:text-[20px]`}
+            className={` text-[12px] pl-3 min-h-[25px] md:py-3  md:px-3 px-1 w-full bg-[#F4F4F4]  ${fontFamily} rounded-2xl focus:outline-none lg:text-[20px]`}
           />
           {specialChar && (
             <span className="absolute bottom-0 bg-[#631363] text-white  rounded-full px-4 text-md font-serif  p-2 left-0">
@@ -147,7 +147,7 @@ const InputBarField = ({
       )}
       {textField && (
         <textarea
-          className={`py-2 font-normal text-[12px] lg:text-[24px] w-full pl-2  px-3 h-[111px]  italic rounded-xl focus:outline-none lg:w-[1493px] lg:h-[310px]`}
+          className={`py-2 font-normal text-[12px] lg:text-[24px] w-full pl-2  px-3 h-[111px] bg-[#F4F4F4]  italic rounded-xl focus:outline-none lg:w-full lg:h-[310px]`}
           placeholder={placeHolder}
           rows={rows}
           cols={30}

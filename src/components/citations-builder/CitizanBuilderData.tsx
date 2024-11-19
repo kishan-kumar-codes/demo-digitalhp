@@ -140,16 +140,17 @@ const CitizanBuilderData = (): JSX.Element => {
   };
 
   return (
-    <div className="w-full">
-      <div className="flex flex-col mb-6 my-3 w-full">
+    <div className="w-full rounded-2xl ">
+      <div className="flex bg-[#E0E0E0] rounded-2xl pb-8 md:pb-0  flex-col w-full">
         <HeadBar title="Citation Builder Data" />
 
-        <div className="flex rounded-3xl -mt-10 z-0 min-h-[160px] justify-start px-5 md:max-w-full bg-[#E0E0E0] py-3">
-          <div className="my-9 w-full">
+        <div className="flex rounded-3xl -mt-10 z-0 min-h-[160px] justify-start px-5 md:max-w-full  pt-3">
+          <div className="mt-9 w-full">
             {/* Instructions and placeholders */}
             <span
               className="break-words text-[10px] md:tracking-normal tracking-normal w-full text-xs md:text-lg"
-              style={textStyle}>
+              style={textStyle}
+            >
               Here you can provide additional, optional information such as
               Business Location contact details, working hours, photos, etc.
               This information is required if you plan to use our Citation
@@ -159,7 +160,8 @@ const CitizanBuilderData = (): JSX.Element => {
             <br />
             <span
               className="break-words text-[10px]  md:tracking-normal tracking-normal w-full text-xs md:text-lg"
-              style={textStyle}>
+              style={textStyle}
+            >
               Enter the contact details that you want to be displayed on this
               client&apos;s directory listings. HubSpark will never use this
               information to directly contact your clients.
@@ -201,7 +203,8 @@ const CitizanBuilderData = (): JSX.Element => {
             {/* Payment methods section */}
             <div
               className="text-[#6D6D6D] text-[10px] py-3 md:py-5 md:text-lg md:text-[#631363] lg:text-[24px]"
-              style={paymentStyle}>
+              style={paymentStyle}
+            >
               Payment methods accepted
             </div>
             <div className="grid grid-cols-3 md:grid-cols-6 py-1 justify-start items-center gap-1 lg:gap-2">
@@ -225,7 +228,8 @@ const CitizanBuilderData = (): JSX.Element => {
             {/* Extra business categories */}
             <div
               className="text-[#6D6D6D] text-xs py-2 md:py-5 md:text-lg md:text-[#631363] lg:text-[24px]"
-              style={paymentStyle}>
+              style={paymentStyle}
+            >
               Extra business categories (recommended)
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -264,7 +268,8 @@ const CitizanBuilderData = (): JSX.Element => {
             {/* List of services/products */}
             <div
               className="text-[#6D6D6D] text-xs pt-3 pb-2 md:pt-5 md:text-lg md:text-[#631363]  lg:text-[24px]"
-              style={paymentStyle}>
+              style={paymentStyle}
+            >
               List of services / products
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -301,7 +306,7 @@ const CitizanBuilderData = (): JSX.Element => {
             </div>
 
             {/* Social media links */}
-            <div className=" grid grid-cols-1 md:grid-cols-2 gap-3 md:py-18 py-4 ">
+            <div className=" grid grid-cols-1 md:grid-cols-2 gap-3 md:py-18 pt-4 ">
               <SocialMedia
                 label={"Facebook (recommended)"}
                 svg={<FacebookSvgs />}
@@ -322,22 +327,40 @@ const CitizanBuilderData = (): JSX.Element => {
             </div>
           </div>
         </div>
-      </div>
-      <div className="flex flex-col w-full md:items-end  items-start">
-        <button
-          onClick={handleNext}
-          className="bg-[#40F440] w-[320px] ml-3 md:mr-3 mr-0 font-bold text-black rounded-md lg:rounded-xl mt-5 lg:text-[36px] lg:w-[365px]">
-          <Link href="/citations-builder/final">Save</Link>
-        </button>
-        <div className="flex justify-around  lg:justify-end   px-4 py-2 w-full">
-          <button className="bg-[#631363] text-[12px] px-3 py-1 font-bold text-white rounded-md  lg:rounded-xl mt-5 lg:text-[20px] lg:w-[174px] lg:h-[50px] lg:mr-2">
-            Cancel Update
+        <div className=" hidden md:flex md:flex-col items-center md:items-end w-full py-4 space-y-4  ">
+          <button
+            onClick={handleNext}
+            className="bg-[#40F440] w-full md:w-[300px] lg:w-[365px] px-6 py-2 font-bold text-black rounded-md lg:rounded-xl text-lg lg:text-[36px] md:mr-[28px] lg:mr-[48px] "
+          >
+            <Link href="/citations-builder/final">Save</Link>
           </button>
-          <button className="bg-[#DB0020] text-[12px] px-3 py-1 font-bold text-white  rounded-md lg:rounded-xl mt-5 lg:text-[20px] lg:w-[174px] lg:h-[50px]">
-            Delete Location
-          </button>
+          <div className="flex w-full md:w-[300px] lg:w-[365px] space-x-2 md:mr-[28px] lg:mr-[48px] ">
+            <button className="bg-[#631363] flex-1 px-3 py-1 font-bold text-white rounded-md lg:rounded-xl text-[12px] lg:text-[20px]">
+              Cancel Update
+            </button>
+            <button className="bg-[#DB0020] flex-1 px-3 py-1 font-bold text-white rounded-md lg:rounded-xl text-[12px] lg:text-[20px]">
+              Delete Location
+            </button>
+          </div>
         </div>
       </div>
+
+      <div className=" md:hidden flex flex-col items-center md:items-end w-full py-4 space-y-4">
+          <button
+            onClick={handleNext}
+            className="bg-[#40F440] flex justify-center items-center w-full px-6 py-2 pb-2 font-bold text-black rounded-md lg:rounded-xl text-lg h-[33px] text-[20px]"
+          >
+            <Link href="/citations-builder/final">Save</Link>
+          </button>
+          <div className="flex w-full justify-around ">
+            <button className="bg-[#631363] whitespace-nowrap px-3 py-1 font-bold text-white rounded-md lg:rounded-xl w-[106px] h-[29px] text-[12px] lg:text-[12px]">
+              Cancel Update
+            </button>
+            <button className="bg-[#DB0020] whitespace-nowrap px-3 py-1 font-bold text-white rounded-md lg:rounded-xl w-[106px] h-[29px] text-[12px] lg:text-[20px]">
+              Delete Location
+            </button>
+          </div>
+        </div>
     </div>
   );
 };
