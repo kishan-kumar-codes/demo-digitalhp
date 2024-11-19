@@ -147,7 +147,7 @@ const InputBarField = ({
       )}
       {textField && (
         <textarea
-          className={`py-2 font-normal text-[12px] lg:text-[24px] w-full pl-2  px-3 h-[111px]  italic rounded-xl focus:outline-none lg:w-[1493px] lg:h-[310px]`}
+          className={`py-2 font-normal text-[12px] lg:text-[24px] w-full pl-2  px-3 h-[111px]  italic rounded-xl focus:outline-none lg:w-full lg:h-[310px]`}
           placeholder={placeHolder}
           rows={rows}
           cols={30}
