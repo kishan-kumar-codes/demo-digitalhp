@@ -15,7 +15,7 @@ export const fetchReviews = async (widgetId: string): Promise<UniqueReview[]> =>
         setTimeout(() => {
             resolve([
                 { id: 1, content: 'From the moment I called, their customer service was outstanding–friendly, responsive, and efficient.', rating: 5 , reviewerName:'Cindy Brennan'  },
-                { id: 2, content: 'They exceeded my expectations in every way, and I am grateful for their dedication to excellence..', rating: 5 , reviewerName:'Maddie Connor'  },
+                { id: 2, content: 'They exceeded my expectations in every way, and I am grateful for their dedication to excellence..', rating: 3 , reviewerName:'Maddie Connor'  },
             ]);
         }, 1000);
     });
