@@ -50,8 +50,8 @@ const Widget: React.FC = () => {
 
 const HomePage: React.FC = () => {
     return (
-        <div>
-            <h1>Welcome to the Widget Page</h1>
+        <div className='w-full flex flex-col justify-center items-center'>
+            <h1 className='text-[30px] font-[700]'>Welcome to the Widget Page</h1>
             <Widget />
         </div>
     );
