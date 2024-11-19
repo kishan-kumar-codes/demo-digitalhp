@@ -8,6 +8,7 @@ import hubSparkLogo from "@/assets/images/HubSpark New Logo 5.png";
 // import ProgressBar from "@/pages/onboarding/layout/progressBar";
 import ProgressBar from "../../layout/progressBar";
 import { MyContext } from "../../../../utils/MyContext";
+import { ChevronDown } from "lucide-react";
 
 const Checklist = () => {
   const router = useRouter();
@@ -172,19 +173,22 @@ const Checklist = () => {
               What&apos;s your job title?
             </label>
           </div>
-          <div className="flex py-1 lg:py-4 justify-center">
+          <div className="flex py-1 relative lg:py-4  justify-center">
             <select
               value={jobTitle || ""}
               onChange={handleJobTitleChange}
               style={{ marginTop: "10px", padding: "5px" }}
-              className="w-[137px] bg-white h-[33px] mt-[13px] text-[12px] md:text-lg text-darkSilverColor pl-[18px] py-[10px] rounded-lg lg:text-[26px] lg:w-[250px] lg:px-4 lg:py-2">
-              <option value="" disabled>
+              className="w-[137px] bg-white h-[33px] lg:h-12 mt-[13px] text-[12px] md:text-lg text-darkSilverColor pl-[18px] py-[10px] rounded-lg lg:text-[26px] lg:w-[250px] outline-none lg:rounded-2xl lg:px-4 lg:py-5">
+              <option className="pl-2 lg:pl-6" value="" disabled>
                 Choose one
               </option>
               <option value="developer">Developer</option>
               <option value="designer">Designer</option>
               <option value="manager">Manager</option>
             </select>
+            <div className="absolute right-2  transform translate-y-[100%]">
+              <ChevronDown color="#6D6D6D" size={20} fill="#6D6D6D" />
+            </div>
           </div>
           <div
             className="flex justify-center pb-0 lg:pb-10"
@@ -196,7 +200,7 @@ const Checklist = () => {
               Skip
             </button>
             <button
-              className="ml-[7px] text-[16px] md:text-xl font-bold text-white py-[10px] w-[183px] text-center  bg-palatinatePurple rounded-xl lg:rounded-2xl lg:text-[36px] lg:px-10 lg:py-4 lg:w-[312px]"
+              className="ml-[7px] text-[16px] md:text-xl font-bold text-white py-[10px] w-[183px] text-center  bg-palatinatePurple rounded-xl lg:rounded-2xl lg:text-[36px] lg:px-10 lg:py-4 lg:w-[280px]"
               onClick={handleContinue}
               // disabled={!selectedFile}
               style={{ cursor: selectedFile ? "pointer" : "not-allowed" }}>
