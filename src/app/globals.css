@@ -72,6 +72,13 @@ body {
   scrollbar-width: none; /* Firefox */
 }
 
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+}
+
 * {
   padding: 0;
   margin: 0;
