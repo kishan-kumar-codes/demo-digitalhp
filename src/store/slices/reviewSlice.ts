@@ -5,6 +5,8 @@ export interface UniqueReview {
     id: number;
     content: string;
     rating: number;
+    reviewerName:string
+    // img:any
 }
 
 interface ReviewState {

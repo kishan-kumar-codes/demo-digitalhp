@@ -27,3 +27,36 @@ module.exports = {
     },
     mode: 'production',
 };
+
+// const path = require('path');
+
+// module.exports = {
+//     entry: './src/widget-entry.tsx',
+//     output: {
+//         path: path.resolve(__dirname, 'public/dist'),
+//         filename: 'widget-builder.[contenthash].js', // Main bundle
+//         library: 'WidgetBuilder',
+//         libraryTarget: 'umd',
+//         globalObject: 'this',
+//     },
+//     resolve: {
+//         extensions: ['.tsx', '.ts', '.js'],
+//         alias: {
+//             '@': path.resolve(__dirname, 'src'),
+//         },
+//     },
+//     module: {
+//         rules: [
+//             {
+//                 test: /\.(ts|tsx)$/,
+//                 exclude: /node_modules/,
+//                 use: 'babel-loader', // Babel loader for TypeScript/JavaScript
+//             },
+//             {
+//                 test: /\.(png|jpe?g|gif|svg)$/, // Rule for image files
+//                 type: 'asset/inline', // Inlines images as base64 strings
+//             },
+//         ],
+//     },
+//     mode: 'production',
+// };
